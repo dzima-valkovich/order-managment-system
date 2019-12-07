@@ -1,0 +1,346 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                    http://www.liquibase.org/xml/ns/dbchangelog
+                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-1">
+        <createTable tableName="city">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="city_name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-2">
+        <createTable tableName="contract_duration">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fk_employee_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="finish_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="termination_date" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-3">
+        <createTable tableName="customer">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="patronymic" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-4">
+        <createTable tableName="employee">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="login" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="patronymic" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-5">
+        <createTable tableName="employee_email">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fk_employee_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="enable_sending" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-6">
+        <createTable tableName="employee_employee_role">
+            <column name="fk_employee_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_employee_role_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-7">
+        <createTable tableName="employee_phone_number">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="employee_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(12)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="enable_telegram_sending" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-8">
+        <createTable tableName="employee_role">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="role" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(355)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-9">
+        <createTable tableName="order">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fk_employee_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_customer_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_order_adress_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="planned_start_date" type="datetime"/>
+            <column name="fact_start_date" type="datetime"/>
+            <column name="planned_finish_date" type="datetime"/>
+            <column name="fact_finish_date" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-10">
+        <createTable tableName="order_adress">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fk_city_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="adress" type="VARCHAR(55)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="adress_region" type="VARCHAR(25)"/>
+            <column name="adress_postalcode" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-11">
+        <createTable tableName="order_work_type">
+            <column name="fk_order_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_work_type_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-12">
+        <createTable tableName="vacation_duration">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="fk_employee_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="finish_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-13">
+        <createTable tableName="work_type">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(355)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-14">
+        <createIndex indexName="fk_contract_duration_employee1_idx" tableName="contract_duration">
+            <column name="fk_employee_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-15">
+        <createIndex indexName="fk_employee_email_employee1_idx" tableName="employee_email">
+            <column name="fk_employee_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-16">
+        <createIndex indexName="fk_employee_employee_role_employee1_idx" tableName="employee_employee_role">
+            <column name="fk_employee_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-17">
+        <createIndex indexName="fk_employee_employee_role_employee_role1_idx" tableName="employee_employee_role">
+            <column name="fk_employee_role_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-18">
+        <createIndex indexName="fk_employee_phone_number_employee1_idx" tableName="employee_phone_number">
+            <column name="employee_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-19">
+        <createIndex indexName="fk_order_adress_cities1_idx" tableName="order_adress">
+            <column name="fk_city_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-20">
+        <createIndex indexName="fk_order_customer1_idx" tableName="order">
+            <column name="fk_customer_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-21">
+        <createIndex indexName="fk_order_employee1_idx" tableName="order">
+            <column name="fk_employee_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-22">
+        <createIndex indexName="fk_order_order_adress1_idx" tableName="order">
+            <column name="fk_order_adress_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-23">
+        <createIndex indexName="fk_order_work_type_order1_idx" tableName="order_work_type">
+            <column name="fk_order_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-24">
+        <createIndex indexName="fk_order_work_type_work_type1_idx" tableName="order_work_type">
+            <column name="fk_work_type_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-25">
+        <createIndex indexName="fk_vacation_duration_employee1_idx" tableName="vacation_duration">
+            <column name="fk_employee_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-26">
+        <addForeignKeyConstraint baseColumnNames="fk_employee_id" baseTableName="contract_duration"
+                                 constraintName="fk_contract_duration_employee1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-27">
+        <addForeignKeyConstraint baseColumnNames="fk_employee_id" baseTableName="employee_email"
+                                 constraintName="fk_employee_email_employee1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-28">
+        <addForeignKeyConstraint baseColumnNames="fk_employee_id" baseTableName="employee_employee_role"
+                                 constraintName="fk_employee_employee_role_employee1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-29">
+        <addForeignKeyConstraint baseColumnNames="fk_employee_role_id" baseTableName="employee_employee_role"
+                                 constraintName="fk_employee_employee_role_employee_role1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="employee_role" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-30">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="employee_phone_number"
+                                 constraintName="fk_employee_phone_number_employee1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-31">
+        <addForeignKeyConstraint baseColumnNames="fk_city_id" baseTableName="order_adress"
+                                 constraintName="fk_order_adress_cities1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id"
+                                 referencedTableName="city" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-32">
+        <addForeignKeyConstraint baseColumnNames="fk_customer_id" baseTableName="order"
+                                 constraintName="fk_order_customer1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id"
+                                 referencedTableName="customer" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-33">
+        <addForeignKeyConstraint baseColumnNames="fk_employee_id" baseTableName="order"
+                                 constraintName="fk_order_employee1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id"
+                                 referencedTableName="employee" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-34">
+        <addForeignKeyConstraint baseColumnNames="fk_order_adress_id" baseTableName="order"
+                                 constraintName="fk_order_order_adress1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id"
+                                 referencedTableName="order_adress" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-35">
+        <addForeignKeyConstraint baseColumnNames="fk_order_id" baseTableName="order_work_type"
+                                 constraintName="fk_order_work_type_order1" deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id"
+                                 referencedTableName="order" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-36">
+        <addForeignKeyConstraint baseColumnNames="fk_work_type_id" baseTableName="order_work_type"
+                                 constraintName="fk_order_work_type_work_type1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="work_type" validate="true"/>
+    </changeSet>
+    <changeSet author="dima.volkovitch@yandex.by" id="1575757055875-37">
+        <addForeignKeyConstraint baseColumnNames="fk_employee_id" baseTableName="vacation_duration"
+                                 constraintName="fk_vacation_duration_employee1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="employee" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
