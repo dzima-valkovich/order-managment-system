@@ -8,11 +8,12 @@ import java.util.Objects;
 @Table(name = "employee_phone_number")
 public class EmployeePhoneNumber {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "enable_telegram_sending")
-    private String enableTelegramSending;
+    private Boolean enableTelegramSending;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_employee_id", nullable = false)
     private Employee employee;
@@ -48,11 +49,11 @@ public class EmployeePhoneNumber {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEnableTelegramSending() {
+    public Boolean getEnableTelegramSending() {
         return enableTelegramSending;
     }
 
-    public void setEnableTelegramSending(String enableTelegramSending) {
+    public void setEnableTelegramSending(Boolean enableTelegramSending) {
         this.enableTelegramSending = enableTelegramSending;
     }
 

@@ -9,6 +9,7 @@ import java.util.*;
 @Table(name = "employee")
 public class Employee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "login")
     private String login;
@@ -20,17 +21,17 @@ public class Employee {
     private String surname;
     @Column(name = "patronymic")
     private String patronymic;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
-    private Set<EmployeeEmail> employeeEmails = new HashSet<>();
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
-    private Set<EmployeePhoneNumber> employeePhoneNumbers = new HashSet<>();
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "employees")
-    private Set<EmployeeRole> employeeRoles = new HashSet<>();
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
-    private Set<ContractDuration> contractDurations = new HashSet<>();
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
-    private Set<VacationDuration> vacationDurations = new HashSet<>();
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+    private Set<EmployeeEmail> employeeEmails = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
+    private Set<EmployeePhoneNumber> employeePhoneNumbers = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "employees")
+    private Set<EmployeeRole> employeeRoles = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
+    private Set<ContractDuration> contractDurations = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
+    private Set<VacationDuration> vacationDurations = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
     private Set<Order> orders = new HashSet<>();
 
     @Override

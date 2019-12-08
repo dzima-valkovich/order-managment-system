@@ -9,6 +9,7 @@ import java.util.Set;
 @Table(name = "customer")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -22,6 +23,8 @@ public class Customer {
     private String patronymic;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
     private Set<Order> orders = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    private Set<OrderAddress> orderAddresses = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
@@ -95,5 +98,13 @@ public class Customer {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    public Set<OrderAddress> getOrderAddresses() {
+        return orderAddresses;
+    }
+
+    public void setOrderAddresses(Set<OrderAddress> orderAddresses) {
+        this.orderAddresses = orderAddresses;
     }
 }

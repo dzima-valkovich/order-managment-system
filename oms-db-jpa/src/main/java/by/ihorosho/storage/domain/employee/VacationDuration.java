@@ -8,6 +8,7 @@ import java.util.Objects;
 @Table(name = "vacation_duration")
 public class VacationDuration {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "start_date")
     @Temporal(TemporalType.DATE)

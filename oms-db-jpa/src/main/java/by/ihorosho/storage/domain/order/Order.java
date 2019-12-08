@@ -12,6 +12,7 @@ import java.util.Set;
 @Table(name = "order")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "order_date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -28,6 +29,9 @@ public class Order {
     @Column(name = "fact_finish_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date factFinishDate;
+    @Column(name = "termination_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date terminationDate;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_employee_id", nullable = false)
     private Employee employee;

@@ -9,6 +9,7 @@ import java.util.Set;
 @Table(name = "order_address")
 public class OrderAddress {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "address")
     private String address;
@@ -19,6 +20,9 @@ public class OrderAddress {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_city_id", nullable = false)
     private City city;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_customer_id", nullable = false)
+    private Customer customer;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderAddress")
     private Set<Order> orders = new HashSet<>();
 
@@ -76,6 +80,14 @@ public class OrderAddress {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Set<Order> getOrders() {

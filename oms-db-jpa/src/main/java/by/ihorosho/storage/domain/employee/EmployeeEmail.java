@@ -7,6 +7,7 @@ import java.util.Objects;
 @Table(name = "employee_email")
 public class EmployeeEmail {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "email")
     private String email;

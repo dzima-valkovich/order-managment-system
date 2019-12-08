@@ -9,6 +9,7 @@ import java.util.Set;
 @Table(name = "employee_role")
 public class EmployeeRole {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "role")
     private String role;
