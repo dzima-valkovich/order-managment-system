@@ -141,4 +141,12 @@ public class Order {
     public void setWorkTypes(Set<WorkType> workTypes) {
         this.workTypes = workTypes;
     }
+
+    public Date getTerminationDate() {
+        return terminationDate;
+    }
+
+    public void setTerminationDate(Date terminationDate) {
+        this.terminationDate = terminationDate;
+    }
 }
