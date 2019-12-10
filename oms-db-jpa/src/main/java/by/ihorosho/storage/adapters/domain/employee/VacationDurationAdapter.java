@@ -1,7 +1,7 @@
 package by.ihorosho.storage.adapters.domain.employee;
 
-import by.ihorosho.api.domain.employee.IEmployee;
-import by.ihorosho.api.domain.employee.IVacationDuration;
+import by.ihorosho.api.storage.domain.employee.IEmployee;
+import by.ihorosho.api.storage.domain.employee.IVacationDuration;
 import by.ihorosho.storage.domain.employee.VacationDuration;
 
 import java.util.Date;

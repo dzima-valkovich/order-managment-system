@@ -1,7 +1,7 @@
-package by.ihorosho.api.domain.employee;
+package by.ihorosho.api.storage.domain.employee;
 
-import by.ihorosho.api.domain.IEntity;
-import by.ihorosho.api.domain.order.IOrder;
+import by.ihorosho.api.storage.domain.IEntity;
+import by.ihorosho.api.storage.domain.order.IOrder;
 
 import java.util.Set;
 

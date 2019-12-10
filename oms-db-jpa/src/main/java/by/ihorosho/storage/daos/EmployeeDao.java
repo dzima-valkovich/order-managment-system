@@ -6,9 +6,6 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 @Repository("employeeDao")
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class EmployeeDao extends AbstractOmsCrudDao<Employee, Long> {
@@ -16,5 +13,4 @@ public class EmployeeDao extends AbstractOmsCrudDao<Employee, Long> {
     public EmployeeDao() {
         super.setClazz(Employee.class);
     }
-
 }

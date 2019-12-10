@@ -1,7 +1,7 @@
 package by.ihorosho.storage.adapters.domain.employee;
 
-import by.ihorosho.api.domain.employee.IEmployee;
-import by.ihorosho.api.domain.employee.IEmployeeRole;
+import by.ihorosho.api.storage.domain.employee.IEmployee;
+import by.ihorosho.api.storage.domain.employee.IEmployeeRole;
 import by.ihorosho.storage.domain.employee.EmployeeRole;
 
 import java.util.Set;

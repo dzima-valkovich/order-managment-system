@@ -1,4 +1,4 @@
-package by.ihorosho.api.domain;
+package by.ihorosho.api.storage.domain;
 
 public interface IEntity<ID> {
     ID getId();

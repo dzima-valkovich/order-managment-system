@@ -1,6 +1,6 @@
-package by.ihorosho.api.domain.order;
+package by.ihorosho.api.storage.domain.order;
 
-import by.ihorosho.api.domain.IEntity;
+import by.ihorosho.api.storage.domain.IEntity;
 
 import java.util.Set;
 

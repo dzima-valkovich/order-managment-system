@@ -1,9 +1,9 @@
 package by.ihorosho.storage.adapters.domain.order;
 
-import by.ihorosho.api.domain.order.ICity;
-import by.ihorosho.api.domain.order.ICustomer;
-import by.ihorosho.api.domain.order.IOrder;
-import by.ihorosho.api.domain.order.IOrderAddress;
+import by.ihorosho.api.storage.domain.order.ICity;
+import by.ihorosho.api.storage.domain.order.ICustomer;
+import by.ihorosho.api.storage.domain.order.IOrder;
+import by.ihorosho.api.storage.domain.order.IOrderAddress;
 import by.ihorosho.storage.domain.order.OrderAddress;
 
 import java.util.Set;

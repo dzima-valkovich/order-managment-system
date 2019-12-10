@@ -1,10 +1,10 @@
 package by.ihorosho.storage.adapters.domain.order;
 
-import by.ihorosho.api.domain.employee.IEmployee;
-import by.ihorosho.api.domain.order.ICustomer;
-import by.ihorosho.api.domain.order.IOrder;
-import by.ihorosho.api.domain.order.IOrderAddress;
-import by.ihorosho.api.domain.order.IWorkType;
+import by.ihorosho.api.storage.domain.employee.IEmployee;
+import by.ihorosho.api.storage.domain.order.ICustomer;
+import by.ihorosho.api.storage.domain.order.IOrder;
+import by.ihorosho.api.storage.domain.order.IOrderAddress;
+import by.ihorosho.api.storage.domain.order.IWorkType;
 import by.ihorosho.storage.adapters.domain.employee.EmployeeAdapter;
 import by.ihorosho.storage.domain.order.Order;
 
