@@ -10,6 +10,7 @@
     <modules>
         <module>oms-db-jpa</module>
         <module>oms-db-jpa</module>
+        <module>oms-api</module>
     </modules>
     <packaging>pom</packaging>
 

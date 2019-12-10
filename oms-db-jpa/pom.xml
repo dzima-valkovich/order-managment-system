@@ -66,5 +66,17 @@
             <version>5.2.0.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>by.ihorosho</groupId>
+            <artifactId>oms-api</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>by.ihorosho</groupId>
+            <artifactId>oms-api</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

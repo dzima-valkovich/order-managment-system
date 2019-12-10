@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "vacation_duration")
-public class VacationDuration {
+public class VacationDuration  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
