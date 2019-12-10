@@ -6,12 +6,16 @@ import by.ihorosho.storage.adapters.domain.order.CustomerAdapter;
 import by.ihorosho.storage.daos.CustomerDao;
 import by.ihorosho.storage.domain.order.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component("customerDaoAdapter")
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class CustomerDaoAdapter implements ICustomerDao {
-    @Autowired
     private CustomerDao customerDao;
 
     @Override
@@ -52,5 +56,14 @@ public class CustomerDaoAdapter implements ICustomerDao {
     @Override
     public Boolean deleteById(Long aLong) {
         return customerDao.deleteById(aLong);
+    }
+
+    public CustomerDao getCustomerDao() {
+        return customerDao;
+    }
+
+    @Autowired
+    public void setCustomerDao(CustomerDao customerDao) {
+        this.customerDao = customerDao;
     }
 }

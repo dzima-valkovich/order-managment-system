@@ -2,17 +2,20 @@ package by.ihorosho.storage.adapters.daos;
 
 import by.ihorosho.api.storage.daos.IEmployeeRoleDao;
 import by.ihorosho.api.storage.domain.employee.IEmployeeRole;
-import by.ihorosho.storage.adapters.domain.employee.EmployeeAdapter;
 import by.ihorosho.storage.adapters.domain.employee.EmployeeRoleAdapter;
 import by.ihorosho.storage.daos.EmployeeRoleDao;
 import by.ihorosho.storage.domain.employee.EmployeeRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component("employeeRoleDaoAdapter")
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class EmployeeRoleDaoAdapter implements IEmployeeRoleDao {
-    @Autowired
     private EmployeeRoleDao employeeRoleDao;
 
     @Override
@@ -53,5 +56,14 @@ public class EmployeeRoleDaoAdapter implements IEmployeeRoleDao {
     @Override
     public Boolean deleteById(Long aLong) {
         return employeeRoleDao.deleteById(aLong);
+    }
+
+    public EmployeeRoleDao getEmployeeRoleDao() {
+        return employeeRoleDao;
+    }
+
+    @Autowired
+    public void setEmployeeRoleDao(EmployeeRoleDao employeeRoleDao) {
+        this.employeeRoleDao = employeeRoleDao;
     }
 }

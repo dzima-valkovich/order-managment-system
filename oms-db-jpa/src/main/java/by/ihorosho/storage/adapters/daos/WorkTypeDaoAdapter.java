@@ -6,12 +6,16 @@ import by.ihorosho.storage.adapters.domain.order.WorkTypeAdapter;
 import by.ihorosho.storage.daos.WorkTypeDao;
 import by.ihorosho.storage.domain.order.WorkType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component("workTypeDaoAdapter")
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class WorkTypeDaoAdapter implements IWorkTypeDao {
-    @Autowired
     private WorkTypeDao workTypeDao;
 
     @Override
@@ -52,5 +56,14 @@ public class WorkTypeDaoAdapter implements IWorkTypeDao {
     @Override
     public Boolean deleteById(Long aLong) {
         return workTypeDao.deleteById(aLong);
+    }
+
+    public WorkTypeDao getWorkTypeDao() {
+        return workTypeDao;
+    }
+
+    @Autowired
+    public void setWorkTypeDao(WorkTypeDao workTypeDao) {
+        this.workTypeDao = workTypeDao;
     }
 }
