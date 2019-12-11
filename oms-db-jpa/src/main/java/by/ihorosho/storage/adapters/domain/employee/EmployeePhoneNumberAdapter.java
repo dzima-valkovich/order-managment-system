@@ -4,6 +4,8 @@ import by.ihorosho.api.storage.domain.employee.IEmployee;
 import by.ihorosho.api.storage.domain.employee.IEmployeePhoneNumber;
 import by.ihorosho.storage.domain.employee.EmployeePhoneNumber;
 
+import java.util.Objects;
+
 public class EmployeePhoneNumberAdapter implements IEmployeePhoneNumber {
     private EmployeePhoneNumber employeePhoneNumber;
 
@@ -29,6 +31,19 @@ public class EmployeePhoneNumberAdapter implements IEmployeePhoneNumber {
     @Override
     public void setEnableTelegramSending(Boolean enableTelegramSending) {
         employeePhoneNumber.setEnableTelegramSending(enableTelegramSending);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EmployeePhoneNumberAdapter)) return false;
+        EmployeePhoneNumberAdapter that = (EmployeePhoneNumberAdapter) o;
+        return Objects.equals(getEmployeePhoneNumber(), that.getEmployeePhoneNumber());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmployeePhoneNumber());
     }
 
     @Override

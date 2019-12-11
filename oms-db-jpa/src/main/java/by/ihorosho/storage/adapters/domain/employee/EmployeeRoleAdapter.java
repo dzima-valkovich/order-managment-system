@@ -4,6 +4,7 @@ import by.ihorosho.api.storage.domain.employee.IEmployee;
 import by.ihorosho.api.storage.domain.employee.IEmployeeRole;
 import by.ihorosho.storage.domain.employee.EmployeeRole;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,19 @@ public class EmployeeRoleAdapter implements IEmployeeRole {
 
     public EmployeeRoleAdapter(EmployeeRole employeeRole) {
         this.employeeRole = employeeRole;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EmployeeRoleAdapter)) return false;
+        EmployeeRoleAdapter that = (EmployeeRoleAdapter) o;
+        return Objects.equals(getEmployeeRole(), that.getEmployeeRole());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmployeeRole());
     }
 
     @Override

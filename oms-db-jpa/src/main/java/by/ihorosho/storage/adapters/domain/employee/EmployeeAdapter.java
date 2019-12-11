@@ -5,14 +5,32 @@ import by.ihorosho.api.storage.domain.order.IOrder;
 import by.ihorosho.storage.adapters.domain.order.OrderAdapter;
 import by.ihorosho.storage.domain.employee.Employee;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class EmployeeAdapter implements IEmployee {
     private Employee employee;
 
+    public EmployeeAdapter() {
+        employee = new Employee();
+    }
+
     public EmployeeAdapter(Employee employee) {
         this.employee = employee;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EmployeeAdapter)) return false;
+        EmployeeAdapter that = (EmployeeAdapter) o;
+        return Objects.equals(getEmployee(), that.getEmployee());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmployee());
     }
 
     @Override

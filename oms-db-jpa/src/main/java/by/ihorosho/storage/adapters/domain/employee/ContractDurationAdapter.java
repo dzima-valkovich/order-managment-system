@@ -5,12 +5,26 @@ import by.ihorosho.api.storage.domain.employee.IEmployee;
 import by.ihorosho.storage.domain.employee.ContractDuration;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class ContractDurationAdapter implements IContractDuration {
     private ContractDuration contractDuration;
 
     public ContractDurationAdapter(ContractDuration contractDuration) {
         this.contractDuration = contractDuration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ContractDurationAdapter)) return false;
+        ContractDurationAdapter that = (ContractDurationAdapter) o;
+        return Objects.equals(getContractDuration(), that.getContractDuration());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getContractDuration());
     }
 
     @Override

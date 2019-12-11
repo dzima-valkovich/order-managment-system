@@ -4,11 +4,30 @@ import by.ihorosho.api.storage.domain.employee.IEmployee;
 import by.ihorosho.api.storage.domain.employee.IEmployeeEmail;
 import by.ihorosho.storage.domain.employee.EmployeeEmail;
 
+import java.util.Objects;
+
 public class EmployeeEmailAdapter implements IEmployeeEmail {
     private EmployeeEmail employeeEmail;
 
+    public EmployeeEmailAdapter() {
+        employeeEmail = new EmployeeEmail();
+    }
+
     public EmployeeEmailAdapter(EmployeeEmail employeeEmail) {
         this.employeeEmail = employeeEmail;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EmployeeEmailAdapter)) return false;
+        EmployeeEmailAdapter that = (EmployeeEmailAdapter) o;
+        return Objects.equals(getEmployeeEmail(), that.getEmployeeEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmployeeEmail());
     }
 
     @Override

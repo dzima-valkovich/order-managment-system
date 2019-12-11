@@ -4,6 +4,7 @@ import by.ihorosho.api.storage.domain.order.ICity;
 import by.ihorosho.api.storage.domain.order.IOrderAddress;
 import by.ihorosho.storage.domain.order.City;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,19 @@ public class CityAdapter implements ICity {
 
     public CityAdapter(City city) {
         this.city = city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CityAdapter)) return false;
+        CityAdapter that = (CityAdapter) o;
+        return Objects.equals(getCity(), that.getCity());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCity());
     }
 
     @Override

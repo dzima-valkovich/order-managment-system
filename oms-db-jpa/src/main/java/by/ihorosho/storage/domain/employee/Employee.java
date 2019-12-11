@@ -21,7 +21,7 @@ public class Employee {
     private String surname;
     @Column(name = "patronymic")
     private String patronymic;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
     private Set<EmployeeEmail> employeeEmails = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
     private Set<EmployeePhoneNumber> employeePhoneNumbers = new HashSet<>();

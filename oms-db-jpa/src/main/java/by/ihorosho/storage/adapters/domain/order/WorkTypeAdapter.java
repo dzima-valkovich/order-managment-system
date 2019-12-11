@@ -4,6 +4,7 @@ import by.ihorosho.api.storage.domain.order.IOrder;
 import by.ihorosho.api.storage.domain.order.IWorkType;
 import by.ihorosho.storage.domain.order.WorkType;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,19 @@ public class WorkTypeAdapter implements IWorkType {
 
     public WorkTypeAdapter(WorkType workType) {
         this.workType = workType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof WorkTypeAdapter)) return false;
+        WorkTypeAdapter that = (WorkTypeAdapter) o;
+        return Objects.equals(getWorkType(), that.getWorkType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getWorkType());
     }
 
     @Override

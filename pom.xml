@@ -11,6 +11,8 @@
         <module>oms-db-jpa</module>
         <module>oms-db-jpa</module>
         <module>oms-api</module>
+        <module>oms-core</module>
+        <module>oms-web</module>
     </modules>
     <packaging>pom</packaging>
 

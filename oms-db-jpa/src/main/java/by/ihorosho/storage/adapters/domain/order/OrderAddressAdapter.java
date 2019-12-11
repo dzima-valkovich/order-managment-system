@@ -6,6 +6,7 @@ import by.ihorosho.api.storage.domain.order.IOrder;
 import by.ihorosho.api.storage.domain.order.IOrderAddress;
 import by.ihorosho.storage.domain.order.OrderAddress;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,19 @@ public class OrderAddressAdapter implements IOrderAddress {
 
     public OrderAddressAdapter(OrderAddress orderAddress) {
         this.orderAddress = orderAddress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OrderAddressAdapter)) return false;
+        OrderAddressAdapter that = (OrderAddressAdapter) o;
+        return Objects.equals(getOrderAddress(), that.getOrderAddress());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getOrderAddress());
     }
 
     @Override

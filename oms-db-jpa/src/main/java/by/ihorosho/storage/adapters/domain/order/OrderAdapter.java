@@ -9,6 +9,7 @@ import by.ihorosho.storage.adapters.domain.employee.EmployeeAdapter;
 import by.ihorosho.storage.domain.order.Order;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,19 @@ public class OrderAdapter implements IOrder {
 
     public OrderAdapter(Order order) {
         this.order = order;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OrderAdapter)) return false;
+        OrderAdapter that = (OrderAdapter) o;
+        return Objects.equals(getOrder(), that.getOrder());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getOrder());
     }
 
     @Override

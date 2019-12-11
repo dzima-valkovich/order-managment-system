@@ -5,12 +5,26 @@ import by.ihorosho.api.storage.domain.employee.IVacationDuration;
 import by.ihorosho.storage.domain.employee.VacationDuration;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class VacationDurationAdapter implements IVacationDuration {
     private VacationDuration vacationDuration;
 
     public VacationDurationAdapter(VacationDuration vacationDuration) {
         this.vacationDuration = vacationDuration;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof VacationDurationAdapter)) return false;
+        VacationDurationAdapter that = (VacationDurationAdapter) o;
+        return Objects.equals(getVacationDuration(), that.getVacationDuration());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getVacationDuration());
     }
 
     @Override

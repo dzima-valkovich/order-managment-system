@@ -5,6 +5,7 @@ import by.ihorosho.api.storage.domain.order.IOrder;
 import by.ihorosho.api.storage.domain.order.IOrderAddress;
 import by.ihorosho.storage.domain.order.Customer;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -13,6 +14,19 @@ public class CustomerAdapter implements ICustomer {
 
     public CustomerAdapter(Customer customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CustomerAdapter)) return false;
+        CustomerAdapter that = (CustomerAdapter) o;
+        return Objects.equals(getCustomer(), that.getCustomer());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCustomer());
     }
 
     @Override
