@@ -13,6 +13,8 @@
         <module>oms-api</module>
         <module>oms-core</module>
         <module>oms-web</module>
+        <module>oms-web</module>
+        <module>oms-core</module>
     </modules>
     <packaging>pom</packaging>
 

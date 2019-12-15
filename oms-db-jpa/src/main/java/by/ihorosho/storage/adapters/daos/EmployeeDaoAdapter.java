@@ -66,4 +66,9 @@ public class EmployeeDaoAdapter implements IEmployeeDao {
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
+
+    @Override
+    public IEmployee getByLogin(String login) {
+        return new EmployeeAdapter(employeeDao.getByLogin(login));
+    }
 }
