@@ -60,6 +60,16 @@ public class EmployeeRoleAdapter implements IEmployeeRole {
     }
 
     @Override
+    public boolean addEmployee(IEmployee employee) {
+        return employeeRole.getEmployees().add(((EmployeeAdapter) employee).getEmployee());
+    }
+
+    @Override
+    public boolean removeEmployee(IEmployee employee) {
+        return employeeRole.getEmployees().remove(((EmployeeAdapter) employee).getEmployee());
+    }
+
+    @Override
     public Long getId() {
         return employeeRole.getId();
     }

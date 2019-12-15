@@ -44,6 +44,10 @@ public interface IOrder extends IEntity<Long> {
 
     void setWorkTypes(Set<IWorkType> workTypes);
 
+    boolean addWorkType(IWorkType workType);
+
+    boolean removeWorkType(IWorkType workType);
+
     Date getTerminationDate();
 
     void setTerminationDate(Date terminationDate);

@@ -93,6 +93,16 @@ public class OrderAddressAdapter implements IOrderAddress {
     }
 
     @Override
+    public boolean addOrder(IOrder order) {
+        return orderAddress.getOrders().add(((OrderAdapter) order).getOrder());
+    }
+
+    @Override
+    public boolean removeOrder(IOrder order) {
+        return orderAddress.getOrders().remove(((OrderAdapter) order).getOrder());
+    }
+
+    @Override
     public Long getId() {
         return orderAddress.getId();
     }

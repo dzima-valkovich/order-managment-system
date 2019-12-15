@@ -61,6 +61,16 @@ public class WorkTypeAdapter implements IWorkType {
     }
 
     @Override
+    public boolean addOrder(IOrder order) {
+        return workType.getOrders().add(((OrderAdapter) order).getOrder());
+    }
+
+    @Override
+    public boolean removeOrder(IOrder order) {
+        return workType.getOrders().remove(((OrderAdapter) order).getOrder());
+    }
+
+    @Override
     public Long getId() {
         return workType.getId();
     }

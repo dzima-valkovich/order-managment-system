@@ -30,7 +30,15 @@ public interface ICustomer extends IEntity<Long> {
 
     void setOrders(Set<IOrder> orders);
 
+    boolean addOrder(IOrder order);
+
+    boolean removeOrder(IOrder order);
+
     Set<IOrderAddress> getOrderAddresses();
 
     void setOrderAddresses(Set<IOrderAddress> orderAddresses);
+
+    boolean addOrderAddress(IOrderAddress orderAddress);
+
+    boolean removeOrderAddress(IOrderAddress orderAddress);
 }

@@ -13,4 +13,8 @@ public interface ICity extends IEntity<Long> {
     Set<IOrderAddress> getOrderAddresses();
 
     void setOrderAddresses(Set<IOrderAddress> orderAddresses);
+
+    boolean addOrderAddress(IOrderAddress orderAddress);
+
+    boolean removeOrderAddress(IOrderAddress orderAddress);
 }

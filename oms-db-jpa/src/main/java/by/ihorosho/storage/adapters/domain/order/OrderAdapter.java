@@ -126,6 +126,16 @@ public class OrderAdapter implements IOrder {
     }
 
     @Override
+    public boolean addWorkType(IWorkType workType) {
+        return order.getWorkTypes().add(((WorkTypeAdapter) workType).getWorkType());
+    }
+
+    @Override
+    public boolean removeWorkType(IWorkType workType) {
+        return order.getWorkTypes().remove(((WorkTypeAdapter) workType).getWorkType());
+    }
+
+    @Override
     public Date getTerminationDate() {
         return order.getTerminationDate();
     }

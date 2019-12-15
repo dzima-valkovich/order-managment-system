@@ -92,6 +92,16 @@ public class CustomerAdapter implements ICustomer {
     }
 
     @Override
+    public boolean addOrder(IOrder order) {
+        return customer.getOrders().add(((OrderAdapter) order).getOrder());
+    }
+
+    @Override
+    public boolean removeOrder(IOrder order) {
+        return customer.getOrders().remove(((OrderAdapter) order).getOrder());
+    }
+
+    @Override
     public Set<IOrderAddress> getOrderAddresses() {
         return customer.getOrderAddresses().stream()
                 .map(OrderAddressAdapter::new).collect(Collectors.toSet());
@@ -101,6 +111,16 @@ public class CustomerAdapter implements ICustomer {
     public void setOrderAddresses(Set<IOrderAddress> orderAddresses) {
         customer.setOrderAddresses(orderAddresses.stream()
                 .map(e -> ((OrderAddressAdapter) e).getOrderAddress()).collect(Collectors.toSet()));
+    }
+
+    @Override
+    public boolean addOrderAddress(IOrderAddress orderAddress) {
+        return customer.getOrderAddresses().add(((OrderAddressAdapter) orderAddress).getOrderAddress());
+    }
+
+    @Override
+    public boolean removeOrderAddress(IOrderAddress orderAddress) {
+        return customer.getOrderAddresses().remove(((OrderAddressAdapter) orderAddress).getOrderAddress());
     }
 
     @Override

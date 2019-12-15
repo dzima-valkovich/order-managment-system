@@ -17,4 +17,8 @@ public interface IEmployeeRole extends IEntity<Long> {
     Set<IEmployee> getEmployees();
 
     void setEmployees(Set<IEmployee> employees);
+
+    boolean addEmployee(IEmployee employee);
+
+    boolean removeEmployee(IEmployee employee);
 }

@@ -51,6 +51,16 @@ public class CityAdapter implements ICity {
     }
 
     @Override
+    public boolean addOrderAddress(IOrderAddress orderAddress) {
+        return city.getOrderAddresses().add(((OrderAddressAdapter) orderAddress).getOrderAddress());
+    }
+
+    @Override
+    public boolean removeOrderAddress(IOrderAddress orderAddress) {
+        return city.getOrderAddresses().remove(((OrderAddressAdapter) orderAddress).getOrderAddress());
+    }
+
+    @Override
     public Long getId() {
         return city.getId();
     }

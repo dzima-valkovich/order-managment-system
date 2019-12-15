@@ -29,4 +29,8 @@ public interface IOrderAddress extends IEntity<Long> {
     Set<IOrder> getOrders();
 
     void setOrders(Set<IOrder> orders);
+
+    boolean addOrder(IOrder order);
+
+    boolean removeOrder(IOrder order);
 }
