@@ -3,7 +3,7 @@ package by.ihorosho.api.storage.domain.employee;
 import by.ihorosho.api.storage.domain.IEntity;
 import by.ihorosho.api.storage.domain.order.IOrder;
 
-import java.util.Set;
+import java.util.List;
 
 public interface IEmployee extends IEntity<Long> {
     String getLogin();
@@ -26,49 +26,49 @@ public interface IEmployee extends IEntity<Long> {
 
     void setPatronymic(String patronymic);
 
-    Set<IEmployeeEmail> getEmployeeEmails();
+    List<IEmployeeEmail> getEmployeeEmails();
 
-    void setEmployeeEmails(Set<IEmployeeEmail> employeeEmails);
+    void setEmployeeEmails(List<IEmployeeEmail> employeeEmails);
 
     boolean addEmployeeEmail(IEmployeeEmail employeeEmail);
 
     boolean removeEmployeeEmail(IEmployeeEmail employeeEmail);
 
-    Set<IEmployeePhoneNumber> getEmployeePhoneNumbers();
+    List<IEmployeePhoneNumber> getEmployeePhoneNumbers();
 
-    void setEmployeePhoneNumbers(Set<IEmployeePhoneNumber> employeePhoneNumbers);
+    void setEmployeePhoneNumbers(List<IEmployeePhoneNumber> employeePhoneNumbers);
 
     boolean addEmployeePhoneNumber(IEmployeePhoneNumber employeePhoneNumber);
 
     boolean removeEmployeePhoneNumber(IEmployeePhoneNumber employeePhoneNumber);
 
-    Set<IEmployeeRole> getEmployeeRoles();
+    List<IEmployeeRole> getEmployeeRoles();
 
-    void setEmployeeRoles(Set<IEmployeeRole> employeeRoles);
+    void setEmployeeRoles(List<IEmployeeRole> employeeRoles);
 
     boolean addEmployeeRole(IEmployeeRole employeeRole);
 
     boolean removeEmployeeRole(IEmployeeRole employeeRole);
 
-    Set<IContractDuration> getContractDurations();
+    List<IContractDuration> getContractDurations();
 
-    void setContractDurations(Set<IContractDuration> contractDurations);
+    void setContractDurations(List<IContractDuration> contractDurations);
 
     boolean addContractDuration(IContractDuration contractDuration);
 
     boolean removeContractDuration(IContractDuration contractDuration);
 
-    Set<IVacationDuration> getVacationDurations();
+    List<IVacationDuration> getVacationDurations();
 
-    void setVacationDurations(Set<IVacationDuration> vacationDurations);
+    void setVacationDurations(List<IVacationDuration> vacationDurations);
 
     boolean addVacationDuration(IVacationDuration vacationDuration);
 
     boolean removeVacationDuration(IVacationDuration vacationDuration);
 
-    Set<IOrder> getOrders();
+    List<IOrder> getOrders();
 
-    void setOrders(Set<IOrder> orders);
+    void setOrders(List<IOrder> orders);
 
     boolean addOrder(IOrder order);
 

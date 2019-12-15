@@ -58,10 +58,6 @@ public class EmployeeRoleDaoAdapter implements IEmployeeRoleDao {
         return employeeRoleDao.deleteById(aLong);
     }
 
-    public EmployeeRoleDao getEmployeeRoleDao() {
-        return employeeRoleDao;
-    }
-
     @Autowired
     public void setEmployeeRoleDao(EmployeeRoleDao employeeRoleDao) {
         this.employeeRoleDao = employeeRoleDao;

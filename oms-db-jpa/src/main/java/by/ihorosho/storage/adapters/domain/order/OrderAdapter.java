@@ -10,11 +10,15 @@ import by.ihorosho.storage.domain.order.Order;
 
 import java.util.Date;
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderAdapter implements IOrder {
     private Order order;
+
+    public OrderAdapter() {
+        this.order = new Order();
+    }
 
     public OrderAdapter(Order order) {
         this.order = order;
@@ -114,13 +118,13 @@ public class OrderAdapter implements IOrder {
     }
 
     @Override
-    public Set<IWorkType> getWorkTypes() {
+    public List<IWorkType> getWorkTypes() {
         return order.getWorkTypes().stream()
-                .map(WorkTypeAdapter::new).collect(Collectors.toSet());
+                .map(WorkTypeAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setWorkTypes(Set<IWorkType> workTypes) {
+    public void setWorkTypes(List<IWorkType> workTypes) {
         order.setWorkTypes(workTypes.stream()
                 .map(e -> ((WorkTypeAdapter) e).getWorkType()).collect(Collectors.toSet()));
     }

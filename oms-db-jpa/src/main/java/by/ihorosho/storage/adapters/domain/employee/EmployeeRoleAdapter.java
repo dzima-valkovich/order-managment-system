@@ -5,11 +5,15 @@ import by.ihorosho.api.storage.domain.employee.IEmployeeRole;
 import by.ihorosho.storage.domain.employee.EmployeeRole;
 
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class EmployeeRoleAdapter implements IEmployeeRole {
     private EmployeeRole employeeRole;
+
+    public EmployeeRoleAdapter() {
+        this.employeeRole = new EmployeeRole();
+    }
 
     public EmployeeRoleAdapter(EmployeeRole employeeRole) {
         this.employeeRole = employeeRole;
@@ -49,12 +53,12 @@ public class EmployeeRoleAdapter implements IEmployeeRole {
     }
 
     @Override
-    public Set<IEmployee> getEmployees() {
-        return employeeRole.getEmployees().stream().map(EmployeeAdapter::new).collect(Collectors.toSet());
+    public List<IEmployee> getEmployees() {
+        return employeeRole.getEmployees().stream().map(EmployeeAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setEmployees(Set<IEmployee> employees) {
+    public void setEmployees(List<IEmployee> employees) {
         employeeRole.setEmployees(employees.stream()
                 .map(e -> ((EmployeeAdapter) e).getEmployee()).collect(Collectors.toSet()));
     }

@@ -4,7 +4,7 @@ import by.ihorosho.api.storage.domain.IEntity;
 import by.ihorosho.api.storage.domain.employee.IEmployee;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 public interface IOrder extends IEntity<Long> {
 
@@ -40,9 +40,9 @@ public interface IOrder extends IEntity<Long> {
 
     void setCustomer(ICustomer customer);
 
-    Set<IWorkType> getWorkTypes();
+    List<IWorkType> getWorkTypes();
 
-    void setWorkTypes(Set<IWorkType> workTypes);
+    void setWorkTypes(List<IWorkType> workTypes);
 
     boolean addWorkType(IWorkType workType);
 

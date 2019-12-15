@@ -9,6 +9,10 @@ import java.util.Objects;
 public class EmployeePhoneNumberAdapter implements IEmployeePhoneNumber {
     private EmployeePhoneNumber employeePhoneNumber;
 
+    public EmployeePhoneNumberAdapter() {
+        this.employeePhoneNumber = new EmployeePhoneNumber();
+    }
+
     public EmployeePhoneNumberAdapter(EmployeePhoneNumber employeePhoneNumber) {
         this.employeePhoneNumber = employeePhoneNumber;
     }

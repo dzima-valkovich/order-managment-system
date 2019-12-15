@@ -5,11 +5,15 @@ import by.ihorosho.api.storage.domain.order.IWorkType;
 import by.ihorosho.storage.domain.order.WorkType;
 
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class WorkTypeAdapter implements IWorkType {
     private WorkType workType;
+
+    public WorkTypeAdapter() {
+        this.workType = new WorkType();
+    }
 
     public WorkTypeAdapter(WorkType workType) {
         this.workType = workType;
@@ -49,13 +53,13 @@ public class WorkTypeAdapter implements IWorkType {
     }
 
     @Override
-    public Set<IOrder> getOrders() {
+    public List<IOrder> getOrders() {
         return workType.getOrders().stream()
-                .map(OrderAdapter::new).collect(Collectors.toSet());
+                .map(OrderAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setOrders(Set<IOrder> orders) {
+    public void setOrders(List<IOrder> orders) {
         workType.setOrders(orders.stream()
                 .map(e -> ((OrderAdapter) e).getOrder()).collect(Collectors.toSet()));
     }

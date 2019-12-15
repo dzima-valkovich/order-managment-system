@@ -2,7 +2,7 @@ package by.ihorosho.api.storage.domain.employee;
 
 import by.ihorosho.api.storage.domain.IEntity;
 
-import java.util.Set;
+import java.util.List;
 
 public interface IEmployeeRole extends IEntity<Long> {
 
@@ -14,9 +14,9 @@ public interface IEmployeeRole extends IEntity<Long> {
 
     void setDescription(String description);
 
-    Set<IEmployee> getEmployees();
+    List<IEmployee> getEmployees();
 
-    void setEmployees(Set<IEmployee> employees);
+    void setEmployees(List<IEmployee> employees);
 
     boolean addEmployee(IEmployee employee);
 

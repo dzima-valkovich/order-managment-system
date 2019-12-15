@@ -15,22 +15,23 @@ public class DtoConverter<FROM, TO> {
         this.fieldNames = fieldNames;
     }
 
+    public DtoConverter<TO, FROM> getReverseConverter() {
+        return new DtoConverter<TO, FROM>(fieldNames);
+    }
+
     public TO convert(FROM fromObject, TO toObject) {
         Class<?> fromClass = fromObject.getClass();
         Class<?> toClass = toObject.getClass();
         for (String fieldName : fieldNames) {
             try {
                 Method getter = fromClass.getDeclaredMethod(GET_STR + fieldName);
-                if (getter == null) {
-                    continue;
-                }
                 Method setter = toClass.getDeclaredMethod(SET_STR + fieldName, getter.getReturnType());
-                if (setter == null) {
-                    continue;
-                }
 
                 getter.setAccessible(true);
                 Object value = getter.invoke(fromObject);
+                if (value == null) {
+                    continue;
+                }
 
                 setter.setAccessible(true);
                 setter.invoke(toObject, value);
@@ -42,7 +43,33 @@ public class DtoConverter<FROM, TO> {
         return toObject;
     }
 
-    public List<TO> convert(List<FROM> fromList, Class<TO> toClass) {
+    public TO convert(FROM fromObject, Class<? extends TO> toClass) {
+        try {
+            Class<?> fromClass = fromObject.getClass();
+            TO toObject = toClass.newInstance();
+            for (String fieldName : fieldNames) {
+                try {
+                    Method getter = fromClass.getDeclaredMethod(GET_STR + fieldName);
+                    Method setter = toClass.getDeclaredMethod(SET_STR + fieldName, getter.getReturnType());
+
+                    getter.setAccessible(true);
+                    Object value = getter.invoke(fromObject);
+
+                    setter.setAccessible(true);
+                    setter.invoke(toObject, value);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            return toObject;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<TO> convert(List<FROM> fromList, Class<? extends TO> toClass) {
         return fromList.stream().map(e -> {
             try {
                 return convert(e, toClass.newInstance());
@@ -53,7 +80,7 @@ public class DtoConverter<FROM, TO> {
         }).collect(Collectors.toList());
     }
 
-    public List<TO> convert(Set<FROM> fromList, Class<TO> toClass) {
+    public List<TO> convert(Set<FROM> fromList, Class<? extends TO> toClass) {
         return fromList.stream().map(e -> {
             try {
                 return convert(e, toClass.newInstance());

@@ -1,6 +1,7 @@
 package by.ihorosho.api.services;
 
 import by.ihorosho.api.services.dto.EmployeeDto;
+import by.ihorosho.api.services.dto.EmployeePhoneNumberDto;
 
 import java.util.List;
 
@@ -11,9 +12,11 @@ public interface IEmployeeService {
 
     EmployeeDto getById(Long id);
 
-    void add(EmployeeDto dto);
+    Long add(EmployeeDto dto);
 
-    void update(EmployeeDto dto);
+    Long update(EmployeeDto dto);
 
-    void deleteById(Long id);
+    Boolean deleteById(Long id);
+
+    Long addNewPhoneNumberToEmployee(Long employeeId, EmployeePhoneNumberDto phoneNumberDto);
 }

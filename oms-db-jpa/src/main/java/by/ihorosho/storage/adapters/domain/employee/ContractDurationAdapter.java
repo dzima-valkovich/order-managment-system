@@ -10,6 +10,10 @@ import java.util.Objects;
 public class ContractDurationAdapter implements IContractDuration {
     private ContractDuration contractDuration;
 
+    public ContractDurationAdapter() {
+        contractDuration = new ContractDuration();
+    }
+
     public ContractDurationAdapter(ContractDuration contractDuration) {
         this.contractDuration = contractDuration;
     }

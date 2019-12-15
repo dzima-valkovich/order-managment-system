@@ -7,7 +7,7 @@ import by.ihorosho.storage.domain.employee.Employee;
 import by.ihorosho.storage.domain.employee.EmployeeEmail;
 
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class EmployeeAdapter implements IEmployee {
@@ -85,13 +85,13 @@ public class EmployeeAdapter implements IEmployee {
     }
 
     @Override
-    public Set<IEmployeeEmail> getEmployeeEmails() {
+    public List<IEmployeeEmail> getEmployeeEmails() {
         return employee.getEmployeeEmails().stream()
-                .map(EmployeeEmailAdapter::new).collect(Collectors.toSet());
+                .map(EmployeeEmailAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setEmployeeEmails(Set<IEmployeeEmail> employeeEmails) {
+    public void setEmployeeEmails(List<IEmployeeEmail> employeeEmails) {
         employee.setEmployeeEmails(employeeEmails.stream()
                 .map(e -> ((EmployeeEmailAdapter) e).getEmployeeEmail()).collect(Collectors.toSet()));
     }
@@ -107,13 +107,13 @@ public class EmployeeAdapter implements IEmployee {
     }
 
     @Override
-    public Set<IEmployeePhoneNumber> getEmployeePhoneNumbers() {
+    public List<IEmployeePhoneNumber> getEmployeePhoneNumbers() {
         return employee.getEmployeePhoneNumbers().stream()
-                .map(EmployeePhoneNumberAdapter::new).collect(Collectors.toSet());
+                .map(EmployeePhoneNumberAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setEmployeePhoneNumbers(Set<IEmployeePhoneNumber> employeePhoneNumbers) {
+    public void setEmployeePhoneNumbers(List<IEmployeePhoneNumber> employeePhoneNumbers) {
         employee.setEmployeePhoneNumbers(employeePhoneNumbers.stream()
                 .map(e -> ((EmployeePhoneNumberAdapter) e).getEmployeePhoneNumber()).collect(Collectors.toSet()));
     }
@@ -129,13 +129,13 @@ public class EmployeeAdapter implements IEmployee {
     }
 
     @Override
-    public Set<IEmployeeRole> getEmployeeRoles() {
+    public List<IEmployeeRole> getEmployeeRoles() {
         return employee.getEmployeeRoles().stream()
-                .map(EmployeeRoleAdapter::new).collect(Collectors.toSet());
+                .map(EmployeeRoleAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setEmployeeRoles(Set<IEmployeeRole> employeeRoles) {
+    public void setEmployeeRoles(List<IEmployeeRole> employeeRoles) {
         employee.setEmployeeRoles(employeeRoles.stream()
                 .map(e -> ((EmployeeRoleAdapter) e).getEmployeeRole()).collect(Collectors.toSet()));
     }
@@ -151,13 +151,13 @@ public class EmployeeAdapter implements IEmployee {
     }
 
     @Override
-    public Set<IContractDuration> getContractDurations() {
+    public List<IContractDuration> getContractDurations() {
         return employee.getContractDurations().stream()
-                .map(ContractDurationAdapter::new).collect(Collectors.toSet());
+                .map(ContractDurationAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setContractDurations(Set<IContractDuration> contractDurations) {
+    public void setContractDurations(List<IContractDuration> contractDurations) {
         employee.setContractDurations(contractDurations.stream()
                 .map(e -> ((ContractDurationAdapter) e).getContractDuration()).collect(Collectors.toSet()));
     }
@@ -173,13 +173,13 @@ public class EmployeeAdapter implements IEmployee {
     }
 
     @Override
-    public Set<IVacationDuration> getVacationDurations() {
+    public List<IVacationDuration> getVacationDurations() {
         return employee.getVacationDurations().stream()
-                .map(VacationDurationAdapter::new).collect(Collectors.toSet());
+                .map(VacationDurationAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setVacationDurations(Set<IVacationDuration> vacationDurations) {
+    public void setVacationDurations(List<IVacationDuration> vacationDurations) {
         employee.setVacationDurations(vacationDurations.stream()
                 .map(e -> ((VacationDurationAdapter) e).getVacationDuration()).collect(Collectors.toSet()));
     }
@@ -195,13 +195,13 @@ public class EmployeeAdapter implements IEmployee {
     }
 
     @Override
-    public Set<IOrder> getOrders() {
+    public List<IOrder> getOrders() {
         return employee.getOrders().stream()
-                .map(OrderAdapter::new).collect(Collectors.toSet());
+                .map(OrderAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setOrders(Set<IOrder> orders) {
+    public void setOrders(List<IOrder> orders) {
         employee.setOrders(orders.stream()
                 .map(e -> ((OrderAdapter) e).getOrder()).collect(Collectors.toSet()));
     }

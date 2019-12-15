@@ -6,11 +6,15 @@ import by.ihorosho.api.storage.domain.order.IOrderAddress;
 import by.ihorosho.storage.domain.order.Customer;
 
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class CustomerAdapter implements ICustomer {
     private Customer customer;
+
+    public CustomerAdapter() {
+        this.customer = new Customer();
+    }
 
     public CustomerAdapter(Customer customer) {
         this.customer = customer;
@@ -80,13 +84,13 @@ public class CustomerAdapter implements ICustomer {
     }
 
     @Override
-    public Set<IOrder> getOrders() {
+    public List<IOrder> getOrders() {
         return customer.getOrders().stream()
-                .map(OrderAdapter::new).collect(Collectors.toSet());
+                .map(OrderAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setOrders(Set<IOrder> orders) {
+    public void setOrders(List<IOrder> orders) {
         customer.setOrders(orders.stream()
                 .map(e -> ((OrderAdapter) e).getOrder()).collect(Collectors.toSet()));
     }
@@ -102,13 +106,13 @@ public class CustomerAdapter implements ICustomer {
     }
 
     @Override
-    public Set<IOrderAddress> getOrderAddresses() {
+    public List<IOrderAddress> getOrderAddresses() {
         return customer.getOrderAddresses().stream()
-                .map(OrderAddressAdapter::new).collect(Collectors.toSet());
+                .map(OrderAddressAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setOrderAddresses(Set<IOrderAddress> orderAddresses) {
+    public void setOrderAddresses(List<IOrderAddress> orderAddresses) {
         customer.setOrderAddresses(orderAddresses.stream()
                 .map(e -> ((OrderAddressAdapter) e).getOrderAddress()).collect(Collectors.toSet()));
     }

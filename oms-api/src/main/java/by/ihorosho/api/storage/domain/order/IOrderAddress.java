@@ -2,7 +2,7 @@ package by.ihorosho.api.storage.domain.order;
 
 import by.ihorosho.api.storage.domain.IEntity;
 
-import java.util.Set;
+import java.util.List;
 
 public interface IOrderAddress extends IEntity<Long> {
 
@@ -26,9 +26,9 @@ public interface IOrderAddress extends IEntity<Long> {
 
     void setCustomer(ICustomer customer);
 
-    Set<IOrder> getOrders();
+    List<IOrder> getOrders();
 
-    void setOrders(Set<IOrder> orders);
+    void setOrders(List<IOrder> orders);
 
     boolean addOrder(IOrder order);
 

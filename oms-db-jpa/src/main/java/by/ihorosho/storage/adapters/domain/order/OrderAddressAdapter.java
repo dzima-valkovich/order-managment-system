@@ -7,11 +7,15 @@ import by.ihorosho.api.storage.domain.order.IOrderAddress;
 import by.ihorosho.storage.domain.order.OrderAddress;
 
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderAddressAdapter implements IOrderAddress {
     private OrderAddress orderAddress;
+
+    public OrderAddressAdapter() {
+        this.orderAddress = new OrderAddress();
+    }
 
     public OrderAddressAdapter(OrderAddress orderAddress) {
         this.orderAddress = orderAddress;
@@ -81,13 +85,13 @@ public class OrderAddressAdapter implements IOrderAddress {
     }
 
     @Override
-    public Set<IOrder> getOrders() {
+    public List<IOrder> getOrders() {
         return orderAddress.getOrders().stream()
-                .map(OrderAdapter::new).collect(Collectors.toSet());
+                .map(OrderAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setOrders(Set<IOrder> orders) {
+    public void setOrders(List<IOrder> orders) {
         orderAddress.setOrders(orders.stream()
                 .map(e -> ((OrderAdapter) e).getOrder()).collect(Collectors.toSet()));
     }

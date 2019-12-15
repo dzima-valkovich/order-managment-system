@@ -2,7 +2,7 @@ package by.ihorosho.api.storage.domain.order;
 
 import by.ihorosho.api.storage.domain.IEntity;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ICity extends IEntity<Long> {
 
@@ -10,9 +10,9 @@ public interface ICity extends IEntity<Long> {
 
     void setCityName(String cityName);
 
-    Set<IOrderAddress> getOrderAddresses();
+    List<IOrderAddress> getOrderAddresses();
 
-    void setOrderAddresses(Set<IOrderAddress> orderAddresses);
+    void setOrderAddresses(List<IOrderAddress> orderAddresses);
 
     boolean addOrderAddress(IOrderAddress orderAddress);
 

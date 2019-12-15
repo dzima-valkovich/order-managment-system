@@ -5,11 +5,15 @@ import by.ihorosho.api.storage.domain.order.IOrderAddress;
 import by.ihorosho.storage.domain.order.City;
 
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class CityAdapter implements ICity {
     private City city;
+
+    public CityAdapter() {
+        this.city = new City();
+    }
 
     public CityAdapter(City city) {
         this.city = city;
@@ -39,13 +43,13 @@ public class CityAdapter implements ICity {
     }
 
     @Override
-    public Set<IOrderAddress> getOrderAddresses() {
+    public List<IOrderAddress> getOrderAddresses() {
         return city.getOrderAddresses().stream()
-                .map(OrderAddressAdapter::new).collect(Collectors.toSet());
+                .map(OrderAddressAdapter::new).collect(Collectors.toList());
     }
 
     @Override
-    public void setOrderAddresses(Set<IOrderAddress> orderAddresses) {
+    public void setOrderAddresses(List<IOrderAddress> orderAddresses) {
         city.setOrderAddresses(orderAddresses.stream()
                 .map(e -> ((OrderAddressAdapter) e).getOrderAddress()).collect(Collectors.toSet()));
     }

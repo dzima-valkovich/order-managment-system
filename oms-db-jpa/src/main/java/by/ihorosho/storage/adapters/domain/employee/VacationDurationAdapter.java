@@ -10,6 +10,10 @@ import java.util.Objects;
 public class VacationDurationAdapter implements IVacationDuration {
     private VacationDuration vacationDuration;
 
+    public VacationDurationAdapter() {
+        this.vacationDuration = new VacationDuration();
+    }
+
     public VacationDurationAdapter(VacationDuration vacationDuration) {
         this.vacationDuration = vacationDuration;
     }
