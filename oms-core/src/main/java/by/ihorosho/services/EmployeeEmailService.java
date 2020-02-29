@@ -10,7 +10,7 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-@Service("employeeService")
+@Service("employeeEmailService")
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class EmployeeEmailService implements IEmployeeEmailService {
     private DtoConverter<EmployeeEmailDto, IEmployeeEmail> employeeEmailDtoConverter =

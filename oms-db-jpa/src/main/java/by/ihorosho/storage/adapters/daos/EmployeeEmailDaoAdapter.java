@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-@Service("employeeEmailDao")
+@Service("employeeEmailDaoAdapter")
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class EmployeeEmailDaoAdapter implements IEmployeeEmailDao {
     private EmployeeEmailDao employeeEmailDao;
